@@ -1,46 +1,44 @@
-from abc import ABC, abstractmethod
+from from abc import ABC, abstractmethod
 
 class Shape(ABC):
-    
-    def area_calculate(self):
+    @abstractmethod
+    def area(self):
         pass
-    
-    def perimeter_calculate(self):
+
+    @abstractmethod
+    def perimeter(self):
         pass
+
 
 class Rectangle(Shape):
-    
-    def __init__(self, width, height):
+    def init(self, length, width):
+        self.length = length
         self.width = width
-        self.height = height
-    
-    def area_calculate(self):
-        return self.width * self.height
-    
-    def perimeter_calculate(self):
-        return 2 * (self.width + self.height)
+
+    def area(self):
+        return self.length * self.width
+
+    def perimeter(self):
+        return 2 * (self.length + self.width)
+
 
 class Circle(Shape):
-    
-    def __init__(self, radius):
-        self.radius = radius
-        self.pi = 3.14159  
-    
-    def area_calculate(self):
-        return self.pi * self.radius * self.radius
-    
-    def perimeter_calculate(self):
-        return 2 * self.pi * self.radius
+    def init(self, radius_value):
+        self.radius_value = radius_value
 
-if __name__ == "__main__":
-   
-    shapes_list = [
-        Rectangle(5, 3),
-        Circle(4)
-    ]
-    
-    for shape in shapes_list:
-        print(f"Shape: {type(shape).__name__}")
-        print(f"Area: {shape.area_calculate():.2f}")
-        print(f"Perimeter: {shape.perimeter_calculate():.2f}")
+    def area(self):
+        return 3.14159 * self.radius_value ** 2
+
+    def perimeter(self):
+        return 2 * 3.14159 * self.radius_value
+
+
+shapes_list = [
+    Rectangle(6, 8),
+    Circle(5)
+]
+
+for shape in shapes_list:
+    print("Area:", shape.area())
+    print("Perimeter:", shape.perimeter())
         print("-" * 20)
